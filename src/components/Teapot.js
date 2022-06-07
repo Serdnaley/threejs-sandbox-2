@@ -1,19 +1,21 @@
-import { BoxGeometry, Clock, Points } from 'three'
+import { Clock, Points } from 'three'
 import { DepthShader } from '../shaders/depth-shader'
 
-export class Cube extends Points {
+import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js'
+
+export class Teapot extends Points {
   constructor () {
-    const geometry = new BoxGeometry(100, 100, 100)
+    const geometry = new TeapotGeometry(150, 10, true, true, true, false, false)
     const material = new DepthShader()
 
     super(geometry, material)
     this.time = new Clock(true)
 
-    this.gui = ctx.gui.addFolder('Cube')
+    this.gui = ctx.gui.addFolder('Teapot')
 
     this.rotationSpeed = {
-      x: 1,
-      y: 1,
+      x: .5,
+      y: .5,
       z: 0,
     }
 
@@ -21,7 +23,7 @@ export class Cube extends Points {
     this.gui.add(this.rotationSpeed, 'y').min(0).max(1.5).step(.01).name('Rotation speed y')
     this.gui.add(this.rotationSpeed, 'z').min(0).max(1.5).step(.01).name('Rotation speed z')
 
-    this.positionDelta = 400
+    this.positionDelta = 1000
     this.positionSpeed = .5
     this.gui.add(this, 'positionDelta').min(0).max(1000).step(1)
     this.gui.add(this, 'positionSpeed').min(0).max(1.5).step(.1)

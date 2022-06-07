@@ -4,10 +4,10 @@ import { sizes } from '../services/sizes'
 
 export class MainCamera extends PerspectiveCamera {
   constructor () {
-    super(70, window.innerWidth / window.innerHeight, 1, 3000)
+    super(50, window.innerWidth / window.innerHeight, 1, 3000)
 
     this.position.y = 0
-    this.position.z = 250
+    this.position.z = 500
 
     effect(() => {
       this.aspect = sizes.width / sizes.height

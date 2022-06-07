@@ -1,13 +1,9 @@
-uniform vec3 color;
-uniform sampler2D pointTexture;
-uniform sampler2D pointTextureAlpha;
-
-varying float vAlpha;
+varying vec4 vColor;
+varying float vSize;
 
 void main () {
-    vec4 tColor = texture2D(pointTexture, gl_PointCoord);
+    float d = 1.0 - distance(gl_PointCoord.xy, vec2(0.5, 0.5));
+    float alpha = smoothstep(0.5, 1.0, d) * vColor.a;
 
-    tColor.a *= vAlpha;
-
-    gl_FragColor = tColor;
+    gl_FragColor = vec4(vColor.xyz, alpha);
 }

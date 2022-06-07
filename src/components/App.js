@@ -3,7 +3,7 @@ import { DebugCamera } from './DebugCamera'
 import { MainCamera } from './MainCamera'
 import { AppRenderer } from './AppRenderer'
 import { Stats } from './Stats'
-import { Cube } from './Cube'
+import { Teapot } from './Teapot'
 
 export class App extends Scene {
   constructor () {
@@ -24,9 +24,9 @@ export class App extends Scene {
     this.setupBackground()
     this.setupLight()
 
-    this.cube = new Cube()
-    this.add(this.cube)
-    this.renderList.push('cube')
+    this.teapot = new Teapot()
+    this.add(this.teapot)
+    this.renderList.push('teapot')
   }
 
   setupCamera () {
