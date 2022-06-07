@@ -4,6 +4,7 @@ import { MainCamera } from './MainCamera'
 import { AppRenderer } from './AppRenderer'
 import { Stats } from './Stats'
 import { Teapot } from './Teapot'
+import { Postprocessing } from './Postprocessing'
 
 export class App extends Scene {
   constructor () {
@@ -27,6 +28,8 @@ export class App extends Scene {
     this.teapot = new Teapot()
     this.add(this.teapot)
     this.renderList.push('teapot')
+
+    this.postprocessing = new Postprocessing(this.renderer, this, this.camera)
   }
 
   setupCamera () {
@@ -69,6 +72,6 @@ export class App extends Scene {
 
   render () {
     this.renderList.map(key => this[key].render())
-    this.renderer.render(this, this.camera)
+    this.postprocessing.render(this, this.camera)
   }
 }

@@ -20,12 +20,6 @@ export class DepthShader extends ShaderMaterial {
       pointTexture: {
         value: new TextureLoader().load('/assets/circle_solid_32x32_premultiplied.png')
       },
-      viewport: {
-        value: constants.RENDERER_HEIGHT / 1e3
-      },
-      PIXEL_RATIO: {
-        value: constants.RENDERER_PIXEL_RATIO
-      },
       focusNear: {
         value: options.focusNear
       },
@@ -37,9 +31,6 @@ export class DepthShader extends ShaderMaterial {
       },
       focusNearFadeOutLength: {
         value: options.focusNearFadeOutLength
-      },
-      delta: {
-        value: 0,
       },
     }
 

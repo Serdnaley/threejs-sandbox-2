@@ -2,6 +2,9 @@ uniform float focusFarFadeOutLength;
 uniform float focusNearFadeOutLength;
 uniform float focusFar;
 uniform float focusNear;
+uniform float minOpacity;
+uniform float maxOpacity;
+
 varying vec4 vColor;
 varying float vSize;
 
@@ -27,7 +30,7 @@ void main () {
     vec3 color1 = vec3(194, 240, 158) / 255.0;
     vec3 color2 = vec3(240, 184, 158) / 255.0;
 
-    vColor = vec4(mix(color1, color2, position.x / 100.0), vAlpha);
+    vColor = vec4(mix(color1, color2, position.x / 100.0), vAlpha / 1.5);
 
     float baseSize = 1.0 + smoothstep(focusFar, focusNear, dCamera) * 3.0;
     gl_PointSize = vSize = baseSize + (1.0 - vAlpha) * baseSize * 5.0;
